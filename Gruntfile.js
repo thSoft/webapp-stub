@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-	require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
+	require('jit-grunt')(grunt);
 
 	var typescriptFiles = [ "scripts/**/*.ts", "typings/**/*.ts" ];
 	var lessFiles = [ "stylesheets/**/*.less" ];
