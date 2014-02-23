@@ -21,6 +21,7 @@ Make sure [grunt](http://gruntjs.com) is installed, then just run it:
 Now start editing with your favorite IDE. I recommend [Eclipse](http://www.eclipse.org/downloads) with the following plugins (links point to update sites):
 
 * [Web Developer Tools](http://download.eclipse.org/releases/kepler)
+* [AngularJS](http://oss.opensagres.fr/angularjs-eclipse/1.0.0-SNAPSHOT) (install also Tern and Tern - node.js)
 * [LESS](http://www.normalesup.org/~simonet/soft/ow/update)
 * [TypeScript](http://eclipse-update.palantir.com/eclipse-typescript)
 * [JSON](https://bitbucket.org/denmiroch/jsontools/src/default/JsonSite)
