@@ -2,9 +2,9 @@ module.exports = function(grunt) {
 
 	require('jit-grunt')(grunt);
 
-	var typescriptFiles = [ "scripts/**/*.ts", "typings/**/*.ts" ];
+	var typeScriptFiles = [ "scripts/**/*.ts", "typings/**/*.ts" ];
 	var testsFolder = "tests/";
-	var typescriptTestFiles = [ testsFolder + "**/*.ts" ];
+	var typeScriptTestFiles = [ testsFolder + "**/*.ts" ];
 	var lessFiles = [ "stylesheets/**/*.less" ];
 	var buildFolder = "build/";
 	var concatenatedDependencies = buildFolder + "bower_components.js";
@@ -12,11 +12,11 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		watch : {
 			typescript : {
-				files : typescriptFiles,
+				files : typeScriptFiles,
 				tasks : [ "typescript:scripts" ]
 			},
 			typescriptTests : {
-				files : typescriptTestFiles,
+				files : typeScriptTestFiles,
 				tasks : [ "typescript:tests" ]
 			},
 			less : {
@@ -28,17 +28,17 @@ module.exports = function(grunt) {
 				tasks : [ "bower_concat", "uglify" ]
 			},
 			qunit : {
-				files : typescriptFiles.concat(typescriptTestFiles),
+				files : typeScriptFiles.concat(typeScriptTestFiles),
 				tasks : [ "qunit" ]
 			}
 		},
 		typescript : {
 			scripts : {
-				src : typescriptFiles,
+				src : typeScriptFiles,
 				dest : buildFolder + "scripts.js"
 			},
 			tests : {
-				src : typescriptTestFiles,
+				src : typeScriptTestFiles,
 				dest : testsFolder + "tests.js"
 			}
 		},
