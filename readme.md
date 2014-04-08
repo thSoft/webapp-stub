@@ -24,7 +24,6 @@ Now start editing with your favorite IDE. I recommend [Eclipse](http://www.eclip
 * [AngularJS](http://oss.opensagres.fr/angularjs-eclipse/1.0.0-SNAPSHOT) (install also Tern and Tern - node.js)
 * [LESS](http://www.normalesup.org/~simonet/soft/ow/update)
 * [TypeScript](http://eclipse-update.palantir.com/eclipse-typescript)
-* [JS Test Driver](http://js-test-driver.googlecode.com/svn/update)
 * [JSON](https://bitbucket.org/denmiroch/jsontools/src/default/JsonSite)
 * [Markdown](http://www.winterwell.com/software/updatesite)
 
