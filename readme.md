@@ -20,7 +20,7 @@ Once after checkout, run:
 
 	./init
 
-Before every editing, run:
+Before starting editing, run:
 
 	grunt
 
