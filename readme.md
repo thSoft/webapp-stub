@@ -14,7 +14,7 @@ A skeleton for client-side Web applications.
 
 ## Getting started
 
-Make sure [grunt-cli](http://gruntjs.com/getting-started) is installed.
+Make sure [npm](http://www.npmjs.org) is installed.
 
 Once after cloning, run:
 
