@@ -14,11 +14,17 @@ A skeleton for client-side Web applications.
 
 ## Getting started
 
-Make sure [grunt](http://gruntjs.com) is installed, then just run it:
+Make sure [grunt](http://gruntjs.com) is installed.
+
+Once after checkout, run:
+
+	./init
+
+Before every editing, run:
 
 	grunt
 
-Now start editing with your favorite IDE. I recommend [Eclipse](http://www.eclipse.org/downloads) with the following plugins (links point to update sites):
+For editing, I recommend [Eclipse](http://www.eclipse.org/downloads) with the following plugins (links point to update sites):
 
 * [Web Developer Tools](http://download.eclipse.org/releases/kepler)
 * [AngularJS](http://oss.opensagres.fr/angularjs-eclipse/1.0.0-SNAPSHOT) (install also Tern and Tern - node.js)
