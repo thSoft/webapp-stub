@@ -43,7 +43,10 @@ module.exports = function(grunt) {
 			}
 		},
 		qunit: {
-			all: ['tests/*.html']
+			all: ['tests/*.html'],
+			options : {
+				force: true				
+			}
 		},
 		less : {
 			build : {
