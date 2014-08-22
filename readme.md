@@ -8,9 +8,8 @@ A skeleton for client-side Web applications.
 
 ## Used technologies
 
-* [AngularJS](http://angularjs.org)
-* [LESS](http://lesscss.org)
 * [TypeScript](http://www.typescriptlang.org)
+* [LESS](http://lesscss.org)
 
 ## Getting started
 
@@ -27,9 +26,8 @@ Before starting editing, run:
 For editing, I recommend [Eclipse](http://www.eclipse.org/downloads) with the following plugins (links point to update sites):
 
 * [Web Developer Tools](http://download.eclipse.org/releases/kepler)
-* [AngularJS](http://oss.opensagres.fr/angularjs-eclipse/1.0.0-SNAPSHOT) (install also Tern and Tern - node.js)
-* [LESS](http://www.normalesup.org/~simonet/soft/ow/update)
 * [TypeScript](http://eclipse-update.palantir.com/eclipse-typescript)
+* [LESS](http://www.normalesup.org/~simonet/soft/ow/update)
 * [JSON](https://bitbucket.org/denmiroch/jsontools/src/default/JsonSite)
 * [Markdown](http://www.winterwell.com/software/updatesite)
 
