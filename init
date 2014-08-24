@@ -4,3 +4,4 @@ npm install -g tsd
 npm install
 bower install
 tsd reinstall
+grunt typescript less bower_concat

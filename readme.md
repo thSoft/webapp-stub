@@ -33,4 +33,4 @@ For editing, I recommend [Eclipse](http://www.eclipse.org/downloads) with the fo
 
 To install more dependencies, run:
 
-	add-dependency <dependency>
+	./add-dependency <dependency>

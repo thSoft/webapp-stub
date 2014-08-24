@@ -1,5 +1,5 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-test("Awesome test", () => {
+test("Example test", () => {
 	ok(true);
 });
