@@ -31,7 +31,6 @@ For editing, I recommend [Eclipse](http://www.eclipse.org/downloads) with the fo
 * [JSON](https://bitbucket.org/denmiroch/jsontools/src/default/JsonSite)
 * [Markdown](http://www.winterwell.com/software/updatesite)
 
-To install more dependencies, use:
+To install more dependencies, run:
 
-* [bower](http://bower.io) for JavaScript libraries
-* [tsd](http://definitelytyped.github.io/tsd) for TypeScript definition files
+	add-dependency <dependency>
