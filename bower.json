@@ -1,15 +1,12 @@
 {
-  "name": "webapp-stub",
-  "version": "0.0.0",
-  "ignore": [
-    "**/.*",
-    "bower_components",
-    "build",
-    "node_modules",
-    "tests",
-    "typings"
-  ],
-  "dependencies": {
-    "qunit": "~1.15.0"
-  }
+	"name": "webapp-stub",
+	"version": "0.0.0",
+	"ignore": [
+		"**/.*",
+		"bower_components",
+		"build",
+		"node_modules",
+		"tests",
+		"typings"
+	]
 }

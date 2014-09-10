@@ -1,6 +1,4 @@
-npm install -g grunt-cli
-npm install -g bower
-npm install -g tsd
+npm install -g grunt-cli bower tsd
 npm install
 ./add-dependency qunit
 grunt typescript less bower_concat
