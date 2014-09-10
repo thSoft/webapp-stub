@@ -4,9 +4,11 @@
 	"ignore": [
 		"**/.*",
 		"bower_components",
-		"build",
 		"node_modules",
-		"tests",
+		"target",
 		"typings"
-	]
+	],
+	"dependencies": {
+		"jasmine": "~2.0.4"
+	}
 }

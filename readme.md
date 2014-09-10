@@ -13,7 +13,7 @@ A skeleton for client-side Web applications.
 
 ## Getting started
 
-Make sure [npm](http://www.npmjs.org) is installed.
+Make sure you have [npm](http://www.npmjs.org) installed.
 
 Once after cloning, run:
 
@@ -23,7 +23,7 @@ Before starting editing, run:
 
 	grunt
 
-For editing, I recommend [Eclipse](http://www.eclipse.org/downloads) with the following plugins (links point to update sites):
+Edit the files in the `src` directory. For editing, I recommend [Eclipse](http://www.eclipse.org/downloads) with the following plugins (links point to update sites):
 
 * [Web Developer Tools](http://download.eclipse.org/releases/kepler)
 * [TypeScript](http://eclipse-update.palantir.com/eclipse-typescript)
@@ -34,3 +34,5 @@ For editing, I recommend [Eclipse](http://www.eclipse.org/downloads) with the fo
 To install more dependencies, run:
 
 	./add-dependency <dependency>
+
+Host the `target` directory.

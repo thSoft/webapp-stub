@@ -2,72 +2,125 @@ module.exports = function(grunt) {
 
 	require('jit-grunt')(grunt);
 
-	var typeScriptFiles = [ "scripts/**/*.ts", "typings/**/*.ts" ];
-	var testsFolder = "tests/";
-	var typeScriptTestFiles = [ testsFolder + "**/*.ts" ];
-	var lessFiles = [ "stylesheets/**/*.less" ];
-	var buildFolder = "build/";
-	var concatenatedDependencies = buildFolder + "bower_components.js";
+	var mainFolder = "main/";
+	var testFolder = "test/";
+
+	var sourceFolder = "src/";
+	var sourceMainFolder = sourceFolder + mainFolder;
+	var scripts = [ sourceMainFolder + "scripts/**/*.ts", "typings/**/*.ts" ];
+	var stylesheets = [ sourceMainFolder + "stylesheets/**/*.less" ];
+	var siteFolder = sourceMainFolder + "site/";
+	var pages = "**/*.html";
+	var sourceTestFolder = sourceFolder + testFolder;
+	var tests = [ sourceTestFolder + "**/*.ts" ];
+
+	var targetFolder = "target/";
+	var targetMainFolder = targetFolder + "main/";
+	var compiledDependenciesBasename = "bower_components.js"
+	var compiledDependencies = targetMainFolder + compiledDependenciesBasename;
+	var compiledScriptsBasename = "scripts.js";
+	var compiledScripts = targetMainFolder + compiledScriptsBasename;
+	var compiledStylesheetsBasename = "stylesheets.css";
+	var compiledStylesheets = targetMainFolder + compiledStylesheetsBasename;
+	var compiledMainPage = targetMainFolder + "index.html";
+	var targetTestFolder = targetFolder + testFolder;
+	var compiledTests = targetTestFolder + "tests.js";
 
 	grunt.initConfig({
 		watch : {
-			typescript : {
-				files : typeScriptFiles,
-				tasks : [ "typescript:scripts" ]
-			},
-			typescriptTests : {
-				files : typeScriptTestFiles,
-				tasks : [ "typescript:tests" ]
-			},
-			less : {
-				files : lessFiles,
-				tasks : [ "less" ]
-			},
 			bower_concat : {
 				files : [ "bower.json" ],
 				tasks : [ "bower_concat", "uglify" ]
 			},
-			qunit : {
-				files : typeScriptFiles.concat(typeScriptTestFiles),
-				tasks : [ "qunit" ]
+			typescript : {
+				files : scripts,
+				tasks : [ "typescript:scripts" ]
+			},
+			less : {
+				files : stylesheets,
+				tasks : [ "less" ]
+			},
+			site : {
+				files : siteFolder + pages,
+				tasks : [ "clean", "copy", "dom_munger" ]
+			},
+			typescriptTests : {
+				files : tests,
+				tasks : [ "typescript:tests" ]
+			},
+			test : {
+				files : scripts.concat(tests),
+				tasks : [ "jasmine" ]
 			}
 		},
 		typescript : {
 			scripts : {
-				src : typeScriptFiles,
-				dest : buildFolder + "scripts.js"
+				src : scripts,
+				dest : compiledScripts
 			},
 			tests : {
-				src : typeScriptTestFiles,
-				dest : testsFolder + "tests.js"
-			}
-		},
-		qunit: {
-			all: ['tests/*.html'],
-			options : {
-				force: true				
+				src : tests,
+				dest : compiledTests
 			}
 		},
 		less : {
 			build : {
-				src : lessFiles,
-				dest : buildFolder + "stylesheets.css"
+				src : stylesheets,
+				dest : compiledStylesheets
 			}
 		},
 		bower_concat : {
 			build : {
-				dest : concatenatedDependencies
+				dest : compiledDependencies,
+				mainFiles : {
+					"jasmine" : "lib/jasmine-core/jasmine.js"
+				}
 			}
 		},
 		uglify : {
 			build : {
-				src : concatenatedDependencies,
-				dest : concatenatedDependencies
+				src : compiledDependencies,
+				dest : compiledDependencies
+			}
+		},
+		clean : {
+			build : targetMainFolder + pages
+		},
+		copy : {
+			build : {
+				expand : true,
+				cwd : siteFolder,
+				src : pages,
+				dest : targetMainFolder
+			}
+		},
+		dom_munger : {
+			build : {
+				src : compiledMainPage,
+				dest : compiledMainPage,
+				options : {
+					append : {
+						selector : "head",
+						html :
+							'<script src="' + compiledDependenciesBasename + '" type="text/javascript"></script>' +
+							'<script src="' + compiledScriptsBasename + '" type="text/javascript"></script>' +
+							'<link rel="stylesheet" href="' + compiledStylesheetsBasename + '" type="text/css" />'
+					}
+				}
+			}
+		},
+		jasmine : {
+			test : {
+				src : [ compiledScripts, compiledDependencies ],
+				options : {
+					specs : compiledTests,
+					force : true
+				}
 			}
 		},
 		open : {
 			build : {
-				path : "index.html"
+				path : compiledMainPage
 			}
 		}
 	});
