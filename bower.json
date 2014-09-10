@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "ignore": [
     "**/.*",
-    "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "build",
+    "node_modules",
+    "tests",
+    "typings"
   ],
   "dependencies": {
-    "qunit": "~1.14.0"
+    "qunit": "~1.15.0"
   }
 }

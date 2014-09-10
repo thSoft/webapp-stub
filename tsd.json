@@ -6,7 +6,7 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "qunit/qunit.d.ts": {
-      "commit": "d6d7eec45aefe7d0f9911b8ce63b05ec1cc9bd6e"
+      "commit": "50dd84eb5d5593787b7686decf1476d094f5e13a"
     }
   }
 }
