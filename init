@@ -1,4 +1,4 @@
 npm install -g grunt-cli bower tsd
 npm install
 ./add-dependency jasmine
-grunt typescript less bower_concat uglify copy dom_munger jasmine
+grunt typescript less bower_concat uglify dom_munger jasmine

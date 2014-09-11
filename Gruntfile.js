@@ -9,8 +9,8 @@ module.exports = function(grunt) {
 	var sourceMainFolder = sourceFolder + mainFolder;
 	var scripts = [ sourceMainFolder + "scripts/**/*.ts", "typings/**/*.ts" ];
 	var stylesheets = [ sourceMainFolder + "stylesheets/**/*.less" ];
-	var siteFolder = sourceMainFolder + "site/";
-	var pages = "**/*.html";
+	var siteBasename = "index.html";
+	var site = sourceMainFolder + siteBasename;
 	var sourceTestFolder = sourceFolder + testFolder;
 	var tests = [ sourceTestFolder + "**/*.ts" ];
 
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 	var compiledScripts = targetMainFolder + compiledScriptsBasename;
 	var compiledStylesheetsBasename = "stylesheets.css";
 	var compiledStylesheets = targetMainFolder + compiledStylesheetsBasename;
-	var compiledMainPage = targetMainFolder + "index.html";
+	var compiledSite = targetMainFolder + siteBasename;
 	var targetTestFolder = targetFolder + testFolder;
 	var compiledTests = targetTestFolder + "tests.js";
 
@@ -41,8 +41,8 @@ module.exports = function(grunt) {
 				tasks : [ "less" ]
 			},
 			site : {
-				files : siteFolder + pages,
-				tasks : [ "clean", "copy", "dom_munger" ]
+				files : site,
+				tasks : [ "dom_munger" ]
 			},
 			typescriptTests : {
 				files : tests,
@@ -83,21 +83,10 @@ module.exports = function(grunt) {
 				dest : compiledDependencies
 			}
 		},
-		clean : {
-			build : targetMainFolder + pages
-		},
-		copy : {
-			build : {
-				expand : true,
-				cwd : siteFolder,
-				src : pages,
-				dest : targetMainFolder
-			}
-		},
 		dom_munger : {
 			build : {
-				src : compiledMainPage,
-				dest : compiledMainPage,
+				src : site,
+				dest : compiledSite,
 				options : {
 					append : {
 						selector : "head",
@@ -120,7 +109,7 @@ module.exports = function(grunt) {
 		},
 		open : {
 			build : {
-				path : compiledMainPage
+				path : compiledSite
 			}
 		}
 	});
