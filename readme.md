@@ -35,4 +35,4 @@ To install more dependencies, run:
 
 	./add-dependency <dependency>
 
-Host the `target` directory.
+Host the `target/site` directory.

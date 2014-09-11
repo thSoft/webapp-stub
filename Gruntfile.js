@@ -7,24 +7,28 @@ module.exports = function(grunt) {
 
 	var sourceFolder = "src/";
 	var sourceMainFolder = sourceFolder + mainFolder;
-	var scripts = [ sourceMainFolder + "scripts/**/*.ts", "typings/**/*.ts" ];
-	var stylesheets = [ sourceMainFolder + "stylesheets/**/*.less" ];
+	var mainScripts = [ sourceMainFolder + "**/*.ts", "typings/**/*.ts" ];
+	var sourceSiteFolder = sourceFolder + "site/";
+	var siteScripts = [ sourceSiteFolder + "**/*.ts" ];
+	var stylesheets = [ sourceSiteFolder + "**/*.less" ];
 	var siteBasename = "index.html";
-	var site = sourceMainFolder + siteBasename;
+	var site = sourceSiteFolder + siteBasename;
 	var sourceTestFolder = sourceFolder + testFolder;
-	var tests = [ sourceTestFolder + "**/*.ts" ];
+	var testScripts = [ sourceTestFolder + "**/*.ts" ];
 
 	var targetFolder = "target/";
 	var targetMainFolder = targetFolder + "main/";
+	var targetSiteFolder = targetFolder + "site/";
 	var compiledDependenciesBasename = "bower_components.js"
-	var compiledDependencies = targetMainFolder + compiledDependenciesBasename;
+	var compiledDependencies = targetSiteFolder + compiledDependenciesBasename;
 	var compiledScriptsBasename = "scripts.js";
-	var compiledScripts = targetMainFolder + compiledScriptsBasename;
+	var compiledMainScripts = targetMainFolder + compiledScriptsBasename;
+	var compiledSiteScripts = targetSiteFolder + compiledScriptsBasename;
 	var compiledStylesheetsBasename = "stylesheets.css";
-	var compiledStylesheets = targetMainFolder + compiledStylesheetsBasename;
-	var compiledSite = targetMainFolder + siteBasename;
+	var compiledStylesheets = targetSiteFolder + compiledStylesheetsBasename;
+	var compiledSite = targetSiteFolder + siteBasename;
 	var targetTestFolder = targetFolder + testFolder;
-	var compiledTests = targetTestFolder + "tests.js";
+	var compiledTestScripts = targetTestFolder + "tests.js";
 
 	grunt.initConfig({
 		watch : {
@@ -32,9 +36,13 @@ module.exports = function(grunt) {
 				files : [ "bower.json" ],
 				tasks : [ "bower_concat", "uglify" ]
 			},
-			typescript : {
-				files : scripts,
-				tasks : [ "typescript:scripts" ]
+			typescript_main : {
+				files : mainScripts,
+				tasks : [ "typescript:main" ]
+			},
+			typescript_site : {
+				files : siteScripts,
+				tasks : [ "typescript:site" ]
 			},
 			less : {
 				files : stylesheets,
@@ -44,29 +52,13 @@ module.exports = function(grunt) {
 				files : site,
 				tasks : [ "dom_munger" ]
 			},
-			typescriptTests : {
-				files : tests,
-				tasks : [ "typescript:tests" ]
+			typescript_test : {
+				files : testScripts,
+				tasks : [ "typescript:test" ]
 			},
 			test : {
-				files : scripts.concat(tests),
+				files : mainScripts.concat(testScripts),
 				tasks : [ "jasmine" ]
-			}
-		},
-		typescript : {
-			scripts : {
-				src : scripts,
-				dest : compiledScripts
-			},
-			tests : {
-				src : tests,
-				dest : compiledTests
-			}
-		},
-		less : {
-			build : {
-				src : stylesheets,
-				dest : compiledStylesheets
 			}
 		},
 		bower_concat : {
@@ -81,6 +73,26 @@ module.exports = function(grunt) {
 			build : {
 				src : compiledDependencies,
 				dest : compiledDependencies
+			}
+		},
+		typescript : {
+			main : {
+				src : mainScripts,
+				dest : compiledMainScripts
+			},
+			site : {
+				src : mainScripts.concat(siteScripts),
+				dest : compiledSiteScripts
+			},
+			test : {
+				src : testScripts,
+				dest : compiledTestScripts
+			}
+		},
+		less : {
+			build : {
+				src : stylesheets,
+				dest : compiledStylesheets
 			}
 		},
 		dom_munger : {
@@ -100,9 +112,9 @@ module.exports = function(grunt) {
 		},
 		jasmine : {
 			test : {
-				src : [ compiledScripts, compiledDependencies ],
+				src : [ compiledMainScripts, compiledDependencies ],
 				options : {
-					specs : compiledTests,
+					specs : compiledTestScripts,
 					force : true
 				}
 			}
