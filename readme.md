@@ -10,6 +10,7 @@ A skeleton for client-side Web applications.
 
 * [TypeScript](http://www.typescriptlang.org)
 * [LESS](http://lesscss.org)
+* [Jasmine](http://jasmine.github.io)
 
 ## Getting started
 
