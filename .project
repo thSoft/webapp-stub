@@ -13,7 +13,5 @@
 	</buildSpec>
 	<natures>
 		<nature>com.palantir.typescript.typeScriptNature</nature>
-		<nature>org.eclipse.angularjs.core.angularnature</nature>
-		<nature>tern.eclipse.ide.core.ternnature</nature>
 	</natures>
 </projectDescription>
